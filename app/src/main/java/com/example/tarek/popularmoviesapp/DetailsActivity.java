@@ -34,13 +34,13 @@ import android.widget.Toast;
 
 import com.example.tarek.popularmoviesapp.model.MovieReviewsKey;
 import com.example.tarek.popularmoviesapp.model.MovieReviewsKeyResponse;
-import com.example.tarek.popularmoviesapp.room.database.MovieEntry;
 import com.example.tarek.popularmoviesapp.model.MovieTrailerKey;
 import com.example.tarek.popularmoviesapp.model.MovieTrailerKeyResponse;
 import com.example.tarek.popularmoviesapp.rest.ApiClient;
 import com.example.tarek.popularmoviesapp.rest.ApiInterface;
-import com.example.tarek.popularmoviesapp.sync.MoviesIntentService;
+import com.example.tarek.popularmoviesapp.room.database.MovieEntry;
 import com.example.tarek.popularmoviesapp.sync.MovieReminderTasks;
+import com.example.tarek.popularmoviesapp.sync.MoviesIntentService;
 import com.example.tarek.popularmoviesapp.utils.BackgroundColorUtils;
 import com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils;
 import com.squareup.picasso.Picasso;
@@ -136,7 +136,7 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
                 voteCount, releaseDate, popularity, overView);
 
         Picasso.get().load(posterUrl).placeholder(R.drawable.progress_animation)
-                .error(R.drawable.icon_app)
+                .error(android.R.drawable.stat_notify_error)
                 .into(posterIV);
 
         titleTV.setText(title);

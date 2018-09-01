@@ -17,7 +17,7 @@ limitations under the License.
  */
 package com.example.tarek.popularmoviesapp.utils;
 
-import android.net.Uri;
+import com.example.tarek.popularmoviesapp.BuildConfig;
 
 public interface MoviesConstantsUtils {
 
@@ -42,9 +42,9 @@ public interface MoviesConstantsUtils {
     String FAVOURITE = "favourite"; // to set as PATH3 in url (favourite - unchangeable)
 
     //"https://image.tmdb.org/t/p/w600_and_h900_bestv2";
-    // https://image.tmdb.org/t/p/w185//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg
-    String POSTERS_URL = new Uri.Builder().scheme(SCHEME).authority("image.tmdb.org").appendPath("t")
-            .appendPath("p").appendPath("w600_and_h900_bestv2").build().toString();
+    String POSTERS_BESTV_URL = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
+    //https://image.tmdb.org/t/p/w185//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg
+    String POSTERS_185_URL = "https://image.tmdb.org/t/p/w185";
     //https://www.youtube.com/watch?v=Div0iP65aZo
     String YOUTUBE_URL = "https://www.youtube.com/watch?v=";
     String YOUTUBE_VND = "vnd.youtube:";

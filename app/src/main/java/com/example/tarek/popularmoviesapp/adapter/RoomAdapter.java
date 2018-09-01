@@ -19,19 +19,22 @@ package com.example.tarek.popularmoviesapp.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.tarek.popularmoviesapp.R;
 import com.example.tarek.popularmoviesapp.room.database.MovieEntry;
 import com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 
 import static com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils.ONE;
 import static com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils.ZERO;
@@ -60,7 +63,17 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.MovieViewHolde
         String url = MoviesConstantsUtils.POSTERS_185_URL + movieEntry.getPosterPath();
         Picasso.get().load(url).placeholder(R.drawable.progress_animation)
                 .error(R.drawable.icon_app)
-                .into(holder.moviePosterIV);
+                .into(holder.moviePosterIV, new com.squareup.picasso.Callback() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        Log.d(TAG, e.getMessage());
+                    }
+                });
         int adult = movieEntry.isAdult() ? ONE : ZERO ;
         if (ZERO == adult) {
             holder.adultIcon.setVisibility(View.GONE);
