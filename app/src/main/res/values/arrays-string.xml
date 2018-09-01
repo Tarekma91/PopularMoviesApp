@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+
+Copyright 2018 tarekmabdallah91@gmail.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+<resources>
+    <!-- used for shared preferences as keys of movies list type-->
+    <string-array name="keys_list_types">
+        <item>@string/key_popular_movies</item>
+        <item>@string/key_upcoming_movies</item>
+        <item>@string/key_top_rated_movies</item>
+        <item>@string/key_now_playing_movies</item>
+        <item>@string/key_favoured_movies</item>
+    </string-array>
+
+    <string-array name="values_list_types">
+        <item>@string/value_popular_movies</item>
+        <item>@string/value_upcoming_movies</item>
+        <item>@string/value_top_rated_movies</item>
+        <item>@string/value_now_playing_movies</item>
+        <item>@string/value_favoured_movies</item>
+    </string-array>
+
+    <!-- used for shared preferences as keys as background colors-->
+    <string-array name="keys_list_colors">
+        <item>@string/key_color_blue_bright</item>
+        <item>@string/key_color_green_dark</item>
+        <item>@string/key_color_orange_dark</item>
+        <item>@string/key_color_orange_light</item>
+        <item>@string/key_color_purple</item>
+        <item>@string/key_color_red_dark</item>
+        <item>@string/key_color_black</item>
+    </string-array>
+
+    <string-array name="values_list_colors">
+        <item>@string/value_color_blue_bright</item>
+        <item>@string/value_color_green_dark</item>
+        <item>@string/value_color_orange_dark</item>
+        <item>@string/value_color_orange_light</item>
+        <item>@string/value_color_purple</item>
+        <item>@string/value_color_red_dark</item>
+        <item>@string/value_color_black</item>
+    </string-array>
+
+    <!-- used for sharing movies details with sms-->
+    <string-array name="movie_details">
+        <item>@string/movie_title_label</item>
+        <item>@string/movie_original_title_label</item>
+        <item>@string/movie_original_language</item>
+        <item>@string/movie_vote_rating_label</item>
+        <item>@string/movie_vote_count_label</item>
+        <item>@string/movie_release_date_label</item>
+        <item>@string/movie_popularity_label</item>
+        <item>@string/movie_over_view_label</item>
+    </string-array>
+
+</resources>

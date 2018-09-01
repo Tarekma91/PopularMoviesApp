@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+
+Copyright 2018 tarekmabdallah91@gmail.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#810709</color>
+
+    <color name="text_color_details_activity">@android:color/white</color>
+    <color name="text_color_main_activity">#303F9F</color>
+    <color name="background_shared_preferences_fragment">#c1c0c0</color>
+
+    <color name="green_dark">#ff669900</color>
+    <color name="red_dark">#ffcc0000</color>
+    <color name="purple">#ffaa66cc</color>
+    <color name="orange_light">#ffffbb33</color>
+    <color name="orange_dark">#ffff8800</color>
+    <color name="blue_bright">#ff00ddff</color>
+    <color name="black">#000000</color>
+    <color name="colorPrimary2">#3F51B5</color> <!-- action bar -->
+    <!-- notification bar -->
+
+</resources>

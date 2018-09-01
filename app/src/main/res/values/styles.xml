@@ -1,0 +1,92 @@
+<!--
+
+Copyright 2018 tarekmabdallah91@gmail.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/background_shared_preferences_fragment</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="text_views_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/text_color_details_activity</item>
+        <item name="android:layout_margin">@dimen/space4</item>
+        <item name="android:padding">@dimen/space4</item>
+    </style>
+
+    <style name="title_style" parent="text_views_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">@dimen/label_text_size</item>
+        <item name="android:textColor">@color/text_color_main_activity</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="rating_text_views_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/rating_text_size</item>
+        <item name="android:gravity">end</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:textColor">@color/text_color_main_activity</item>
+        <item name="android:layout_margin">@dimen/space4</item>
+        <item name="android:padding">@dimen/space4</item>
+    </style>
+
+    <style name="rating_full_mark_text_views_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/rating_full_mark</item>
+        <item name="android:textSize">@dimen/rating_full_mark_text_size</item>
+        <item name="android:gravity">end</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:textColor">@color/text_color_main_activity</item>
+        <item name="android:layout_margin">@dimen/space4</item>
+        <item name="android:padding">@dimen/space4</item>
+    </style>
+
+
+    <style name="labels_style" parent="text_views_style">
+        <item name="android:textSize">@dimen/label_text_size</item>
+    </style>
+
+    <style name="icons_styles">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+</resources>

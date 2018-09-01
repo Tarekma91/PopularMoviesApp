@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+
+Copyright 2018 tarekmabdallah91@gmail.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <!-- TODO - to set nav with suitable icons -->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_popular_movies"
+            android:title="@string/popular_movies" />
+        <item
+            android:id="@+id/nav_upcoming_movies"
+            android:title="@string/upcoming_movies" />
+        <item
+            android:id="@+id/nav_top_rated_movies"
+            android:title="@string/top_rated_movies" />
+
+        <item
+            android:id="@+id/nav_now_playing_movies"
+            android:title="@string/now_playing_movies" />
+
+        <item
+            android:id="@+id/nav_favoured_movies"
+            android:title="@string/favoured_movies" />
+    </group>
+
+    <item android:title="@string/communications">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/settings" />
+        </menu>
+    </item>
+
+</menu>

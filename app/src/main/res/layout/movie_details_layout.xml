@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+
+Copyright 2018 tarekmabdallah91@gmail.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/details_original_language_label"
+        style="@style/labels_style"
+        android:text="@string/movie_original_language_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_vote_rating_label" />
+
+    <TextView
+        android:id="@+id/details_original_language"
+        style="@style/text_views_style"
+        app:layout_constraintBottom_toBottomOf="@+id/details_original_language_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/details_original_language_label"
+        app:layout_constraintTop_toTopOf="@+id/details_original_language_label"
+        tools:text="@string/movie_original_language" />
+
+
+    <TextView
+        android:id="@+id/details_release_date_label"
+        style="@style/labels_style"
+        android:text="@string/movie_release_date_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_original_language_label" />
+
+    <TextView
+        android:id="@+id/details_release_date"
+        style="@style/text_views_style"
+        app:layout_constraintBottom_toBottomOf="@+id/details_release_date_label"
+        app:layout_constraintEnd_toEndOf="@+id/details_original_language"
+        app:layout_constraintStart_toStartOf="@+id/details_original_language"
+        app:layout_constraintTop_toTopOf="@+id/details_release_date_label"
+        tools:text="@string/movie_release_date" />
+
+    <TextView
+        android:id="@+id/details_popularity_label"
+        style="@style/labels_style"
+        android:text="@string/movie_popularity_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_release_date_label" />
+
+    <TextView
+        android:id="@+id/details_popularity"
+        style="@style/text_views_style"
+        app:layout_constraintBottom_toBottomOf="@+id/details_popularity_label"
+        app:layout_constraintEnd_toEndOf="@+id/details_original_language"
+        app:layout_constraintStart_toStartOf="@+id/details_original_language"
+        app:layout_constraintTop_toTopOf="@+id/details_popularity_label"
+        tools:text="@string/movie_popularity" />
+
+
+    <TextView
+        android:id="@+id/details_vote_rating_label"
+        style="@style/labels_style"
+        android:text="@string/movie_vote_rating_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        layout="@layout/rating_icon_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/details_vote_rating_label"
+        app:layout_constraintEnd_toEndOf="@+id/details_original_language"
+        app:layout_constraintStart_toStartOf="@+id/details_original_language"
+        app:layout_constraintTop_toTopOf="@+id/details_vote_rating_label" />
+
+    <TextView
+        android:id="@+id/details_vote_count_label"
+        style="@style/labels_style"
+        android:text="@string/movie_vote_count_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_popularity_label" />
+
+    <TextView
+        android:id="@+id/details_vote_count"
+        style="@style/text_views_style"
+        app:layout_constraintBottom_toBottomOf="@+id/details_vote_count_label"
+        app:layout_constraintEnd_toEndOf="@+id/details_original_language"
+        app:layout_constraintStart_toStartOf="@+id/details_original_language"
+        app:layout_constraintTop_toTopOf="@+id/details_vote_count_label"
+        tools:text="@string/movie_vote_count" />
+
+
+</android.support.constraint.ConstraintLayout>

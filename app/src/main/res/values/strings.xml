@@ -1,0 +1,132 @@
+<!--
+
+Copyright 2018 tarekmabdallah91@gmail.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+<resources>
+    <string name="app_name">Movies App</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="no_data_msg">Loading movies now</string>
+    <string name="no_data_in_db_msg">Sorry\n
+        There is no connection to\n
+        retrieve data from Internet\n
+        And there is no movies in db\n
+        with this type</string>
+    <string name="no_connection_msg">No internet connection</string>
+    <string name="updating_msg">Updating . . .</string>
+
+    <string name="favoured_movies">Favoured Movies</string>
+    <string name="popular_movies"> Popular Movies </string>
+    <string name="upcoming_movies"> Upcoming Movies </string>
+    <string name="now_playing_movies"> Now Playing Movies </string>
+    <string name="top_rated_movies"> Top Rated Movies</string>
+    <string name="settings"> Settings</string>
+    <string name="share"> Share </string>
+    <string name="communications"> Communications </string>
+    <string name="details_poster_description">details_poster_description</string>
+    <string name="movie_poster_description">movie_poster_description</string>
+
+    <!-- used in string-array to share in intent in DetailsActivity-->
+    <string name="movie_title_label"> Movie Title </string>
+    <string name="movie_title"> Movie Title </string>
+    <string name="movie_release_date_label"> Release date: </string>
+    <string name="movie_over_view_label"> Overview: </string>
+    <string name="movie_original_title_label">Original Title:  </string>
+    <string name="movie_original_language_label"> Original Language: </string>
+    <string name="movie_popularity_label"> Popularity: </string>
+    <string name="movie_vote_count_label"> Vote Count: </string>
+    <string name="movie_vote_rating_label"> Rating: </string>
+
+    <string name="movie_release_date"> 1/1/2001 </string>
+    <string name="movie_over_view"> Overview: that is placeholder overview for the movie </string>
+    <string name="movie_original_title">Title</string>
+    <string name="movie_original_language">en</string>
+    <string name="movie_popularity"> 123548 </string>
+    <string name="movie_vote_count"> 125369</string>
+    <string name="movie_vote_average"> 8.5 </string>
+
+
+    <string name="savedInstanceState_not_null">savedInstanceState != null </string>
+    <string name="rating_full_mark">/10</string>
+    <string name="details_label">Details</string>
+    <string name="settings_label">Settings</string>
+
+    <string name="error_displaying_data">can not display data @Uri =</string>
+    <string name="error_inserting_data">can not insert data @ Uri =</string>
+    <string name="error_deleting_data">can not delete data @Uri =</string>
+    <string name="error_updating_data">can not update data @ Uri =</string>
+    <string name="name_button_get_movies_from_db">retrieve movies from db</string>
+    <string name="count_inserted_rows_logs">insertedRows = </string>
+
+    <string name="title_preferences_category_list_types">List Movies Settings</string>
+    <string name="title_list_types">select your favoured list type</string>
+    <string name="key_list_types" translatable="false">listType</string>
+    <string name="value_popular_movies" translatable="false">popular</string>
+    <string name="value_upcoming_movies" translatable="false">upcoming</string>
+    <string name="value_top_rated_movies" translatable="false">top_rated</string>
+    <string name="value_now_playing_movies" translatable="false">now_playing</string>
+    <string name="value_favoured_movies" translatable="false">favourite</string>
+    <string name="default_value_list_types" translatable="false">popular</string>
+    <string name="key_popular_movies">Popular Movies</string>
+    <string name="key_upcoming_movies">Upcoming Movies</string>
+    <string name="key_top_rated_movies">Top Rated Movies</string>
+    <string name="key_now_playing_movies">Now Playing Movies</string>
+    <string name="key_favoured_movies">Favourite Movies</string>
+
+    <string name="title_preferences_category_background">Background Settings</string>
+    <string name="title_list_background_colors">select your favoured color</string>
+    <string name="key_background_color_list" translatable="false">backgroundColor</string>
+    <string name="value_color_green_dark" translatable="false">green_dark</string>
+    <string name="value_color_red_dark" translatable="false">red_dark</string>
+    <string name="value_color_purple" translatable="false">purple</string>
+    <string name="value_color_orange_light" translatable="false">orange_light</string>
+    <string name="value_color_orange_dark" translatable="false">orange_dark</string>
+    <string name="value_color_blue_bright" translatable="false">blue_bright</string>
+    <string name="value_color_black" translatable="false">black</string>
+
+    <string name="key_color_green_dark">Green Dark</string>
+    <string name="key_color_red_dark">Red Dark</string>
+    <string name="key_color_purple">Purple</string>
+    <string name="key_color_orange_light">Orange Light</string>
+    <string name="key_color_orange_dark">Orange Dark</string>
+    <string name="key_color_blue_bright">Blue Bright</string>
+    <string name="key_color_black">Dracula</string>
+    <string name="adult_icon_description">adult_icon_description</string>
+    <string name="play_btn_description">play_btn_description</string>
+
+    <string name="tag_heart_off">0</string>
+    <string name="loader_restarted">loader_restarted</string>
+    <string name="loader_initiated">loader_initiated</string>
+    <string name="main_notification_channel_name">main_notification_channel_name</string>
+    <string name="today">TODAY</string>
+    <string name="tomorrow">TOMORROW</string>
+    <string name="onHandleIntent_intent_is_null">onHandleIntent - intent is null</string>
+    <string name="deleted_movies">deleted movies =</string>
+    <string name="movies_updated_title_notification">Movies Updated</string>
+    <string name="movies_updated_text_notification">Db Of Movies App Has Been Updated</string>
+    <string name="ok_msg">OK !</string>
+    <string name="start_sync_service_immediately">startSyncMoviesImmediately</string>
+    <string name="downloading_url_msg">downloading url &amp;</string>
+    <string name="error_in_movie_id_msg">there is an error in  movie\'s id = </string>
+    <string name="error_no_service_bad_gatway_msg">error : service is not available now , or bad gate way</string>
+    <string name="response_msg">response =</string>
+
+
+</resources>

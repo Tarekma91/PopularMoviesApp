@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+
+Copyright 2018 tarekmabdallah91@gmail.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/details_title"
+            style="@style/title_style"
+            android:paddingTop="@dimen/space8"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/movie_title" />
+
+        <TextView
+            android:id="@+id/details_original_title_label"
+            style="@style/labels_style"
+            android:text="@string/movie_original_title_label"
+            app:layout_constraintStart_toStartOf="@+id/details_poster"
+            app:layout_constraintTop_toBottomOf="@id/details_poster" />
+
+        <TextView
+            android:id="@+id/details_original_title"
+            style="@style/text_views_style"
+            app:layout_constraintBottom_toBottomOf="@+id/details_original_title_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/details_original_title_label"
+            app:layout_constraintTop_toTopOf="@+id/details_original_title_label"
+            tools:text="@string/movie_original_title" />
+
+        <ImageView
+            android:id="@+id/details_poster"
+            style="@style/icons_styles"
+            android:contentDescription="@string/details_poster_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_app"
+            android:padding="@dimen/space4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/details_title" />
+
+        <include
+            android:id="@+id/included_details_layout"
+            layout="@layout/movie_details_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space4"
+            app:layout_constraintBottom_toBottomOf="@id/details_poster"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/details_poster"
+            app:layout_constraintTop_toTopOf="@+id/details_poster" />
+
+        <include
+            layout="@layout/overview_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_original_title" />
+
+
+        <include
+            android:id="@+id/included_options_icons_layout"
+            layout="@layout/movie_details_options_icons_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space4"
+            app:layout_constraintEnd_toEndOf="@+id/included_details_layout"
+            app:layout_constraintLeft_toLeftOf="@id/included_details_layout"
+            app:layout_constraintRight_toRightOf="@id/included_details_layout"
+            app:layout_constraintStart_toEndOf="@+id/details_poster"
+            app:layout_constraintTop_toBottomOf="@id/included_details_layout" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
