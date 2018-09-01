@@ -17,12 +17,8 @@ limitations under the License.
  */
 package com.example.tarek.popularmoviesapp.model;
 
-
-import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import com.example.tarek.popularmoviesapp.data.MovieContract.MovieEntry;
 import com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils;
 import com.google.gson.annotations.SerializedName;
 
@@ -70,30 +66,12 @@ public class Movie implements Parcelable, MoviesConstantsUtils {
     @SerializedName("vote_average")
     private final Double voteAverage;
 
-    public Movie(Cursor cursor) {
-        this.rowId = cursor.getInt(cursor.getColumnIndex(MovieEntry._ID));
-        this.posterPath = cursor.getString(cursor.getColumnIndex(MovieEntry.COLUMN_POSTER_PATH));
-        this.adult = cursor.getInt(cursor.getColumnIndex(MovieEntry.COLUMN_ADULT)) == ONE ? TRUE_VALUE : FALSE_VALUE;
-        this.overview = cursor.getString(cursor.getColumnIndex(MovieEntry.COLUMN_OVERVIEW));
-        this.releaseDate = cursor.getString(cursor.getColumnIndex(MovieEntry.COLUMN_RELEASE_DATE));
-        this.originalTitle = cursor.getString(cursor.getColumnIndex(MovieEntry.COLUMN_ORIGINAL_TITLE));
-        this.originalLanguage = cursor.getString(cursor.getColumnIndex(MovieEntry.COLUMN_ORIGINAL_LANGUAGE));
-        this.title = cursor.getString(cursor.getColumnIndex(MovieEntry.COLUMN_TITLE));
-        this.backdropPath = cursor.getString(cursor.getColumnIndex(MovieEntry.COLUMN_BACKDROP_PATH));
-        this.popularity = cursor.getDouble(cursor.getColumnIndex(MovieEntry.COLUMN_POPULARITY));
-        this.voteCount = cursor.getInt(cursor.getColumnIndex(MovieEntry.COLUMN_VOTE_COUNT));
-        this.video = cursor.getString(cursor.getColumnIndex(MovieEntry.COLUMN_VIDEO));
-        this.voteAverage = cursor.getDouble(cursor.getColumnIndex(MovieEntry.COLUMN_VOTE_AVERAGE));
-        this.favoured = cursor.getInt(cursor.getColumnIndex(MovieEntry.COLUMN_FAVOURITE)) == ONE ? TRUE_VALUE : FALSE_VALUE;
-        this.movieId = cursor.getInt(cursor.getColumnIndex(MovieEntry.COLUMN_MOVIE_ID));
-    }
-
     private Movie(Parcel in) {
         movieId = in.readInt();
         rowId = in.readInt();
         posterPath = in.readString();
         adult = in.readByte() != 0;
-        favoured = in.readByte() != 0;
+        favoured = in.readByte() !=0;
         overview = in.readString();
         releaseDate = in.readString();
         originalTitle = in.readString();
@@ -166,7 +144,7 @@ public class Movie implements Parcelable, MoviesConstantsUtils {
         return favoured;
     }
 
-    public int getRowId() {
+    public int getRowId(){
         return rowId;
     }
 

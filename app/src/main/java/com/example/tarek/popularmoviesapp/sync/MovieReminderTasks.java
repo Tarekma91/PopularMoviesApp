@@ -17,29 +17,34 @@ limitations under the License.
  */
 package com.example.tarek.popularmoviesapp.sync;
 
-import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.Context;
 
-import com.example.tarek.popularmoviesapp.data.MovieContract.MovieEntry;
+import com.example.tarek.popularmoviesapp.room.database.AppDatabase;
+import com.example.tarek.popularmoviesapp.room.database.MovieEntry;
+import com.example.tarek.popularmoviesapp.room.AppExecutors;
 import com.example.tarek.popularmoviesapp.utils.MovieNotificationUtils;
 import com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils;
 
 public class MovieReminderTasks implements MoviesConstantsUtils {
 
+    private static final String TAG = MovieReminderTasks.class.getSimpleName();
     public static final String UPDATE_FAVOURED = "UPDATE_FAVOURED";
     public static final String START_SYNC_MOVIES_IMMEDIATELY = "START_SYNC_MOVIES_IMMEDIATELY ";
     public static final String ACTION_DISMISS_NOTIFICATION = "ACTION_DISMISS_NOTIFICATION ";
     public static final String ACTION_SYNC_UPDATING_MOVIES = "ACTION_SYNC_UPDATING_MOVIES";
-    private static final String TAG = MovieReminderTasks.class.getSimpleName();
 
-    public static void executeTask(Context context, String action, int id, int value) {
+    public static void executeTask(final Context context , String action , final int rowId , final int binaryValue) {
         switch (action) {
             case UPDATE_FAVOURED:
-                ContentValues contentValues = new ContentValues();
-                contentValues.put(MovieEntry.COLUMN_FAVOURITE, value);
-                context.getContentResolver().update(ContentUris.withAppendedId(MovieEntry.CONTENT_URI, id)
-                        , contentValues, MovieEntry.COLUMN_ID + EQUALS, new String[]{String.valueOf(id)});
+                final AppDatabase appDatabase = AppDatabase.getInstance(context);
+                AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        MovieEntry movieEntry = appDatabase.movieDao().getMovieByRowId(rowId);
+                        movieEntry.setFavoured(binaryValue);
+                        appDatabase.movieDao().updateMovie(movieEntry);
+                    }
+                });
                 break;
             case ACTION_DISMISS_NOTIFICATION:
                 MovieNotificationUtils.clearAllNotifications(context);

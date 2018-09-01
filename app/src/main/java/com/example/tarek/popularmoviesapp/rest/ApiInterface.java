@@ -17,9 +17,9 @@ limitations under the License.
  */
 package com.example.tarek.popularmoviesapp.rest;
 
+import com.example.tarek.popularmoviesapp.model.MovieReviewsKeyResponse;
 import com.example.tarek.popularmoviesapp.model.MovieTrailerKeyResponse;
 import com.example.tarek.popularmoviesapp.model.MoviesResponse;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -40,4 +40,7 @@ public interface ApiInterface {
 
     @GET("videos")
     Call<MovieTrailerKeyResponse> getMovieTrailers(@Query("api_key") String apiKey);
+
+    @GET("reviews")
+    Call<MovieReviewsKeyResponse> getMovieReviews(@Query("api_key") String apiKey);
 }

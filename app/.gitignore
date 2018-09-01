@@ -66,5 +66,5 @@ fastlane/readme.md
 
 .DS_Store
 
-# for API keys security 
-/gradle.properties 
+# for API keys security
+/gradle.properties

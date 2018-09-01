@@ -52,24 +52,20 @@ public interface MoviesConstantsUtils {
     String MOVIE_KEY = "MOVIE";
     String EMPTY_STRING = "";
     String COMMA = " , ";
+    String REVIEWS = "REVIEWS";
 
-    // --Commented out by Inspection (31/07/2018 01:12 ص):String SIMPLE_DATE_FORMAT_PAtTERN = "EEEE";
-    String MORE_THAN = " >= ";
-    String EQUALS = " =? ";
+    String _PREFERENCES = "_preferences";
     String TEXT_TYPE = "text/plain";
     String NEW_LINE_CHAR = "\n";
 
     String VALUE = "value";
     String ID_KEYWORD = "id";
-
-
-    String COUNTER_KEYWORD = "counter";
     String IS_CONNECTED = "isConnected ";
-    String BUNDLE_KEY = "bundle";
 
-    int MAIN_LOADER_ID = 100;
     int ZERO = 0;
     int ONE = 1;
+    int THREE = 3;
+    int REFRESH_TIME_MS= 1000;
     int INVALID = -1;
 
     boolean TRUE_VALUE = true;

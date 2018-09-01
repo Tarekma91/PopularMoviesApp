@@ -38,13 +38,15 @@ public class ScreenSizeUtils {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
 
-        int SCALING_FACTOR = 180;
+        final int SCALING_FACTOR = 180;
+        final int TWO = 2;
         int noOfColumns = (int) (dpWidth / SCALING_FACTOR);
-        int TWO = 2;
         if (noOfColumns < TWO)
             noOfColumns = TWO;
         return noOfColumns;
     }
+
+
 
 
 }

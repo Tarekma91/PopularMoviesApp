@@ -21,6 +21,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ShareCompat;
@@ -31,17 +32,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tarek.popularmoviesapp.model.Movie;
+import com.example.tarek.popularmoviesapp.model.MovieReviewsKey;
+import com.example.tarek.popularmoviesapp.model.MovieReviewsKeyResponse;
+import com.example.tarek.popularmoviesapp.room.database.MovieEntry;
 import com.example.tarek.popularmoviesapp.model.MovieTrailerKey;
 import com.example.tarek.popularmoviesapp.model.MovieTrailerKeyResponse;
 import com.example.tarek.popularmoviesapp.rest.ApiClient;
 import com.example.tarek.popularmoviesapp.rest.ApiInterface;
-import com.example.tarek.popularmoviesapp.sync.MovieReminderTasks;
 import com.example.tarek.popularmoviesapp.sync.MoviesIntentService;
+import com.example.tarek.popularmoviesapp.sync.MovieReminderTasks;
 import com.example.tarek.popularmoviesapp.utils.BackgroundColorUtils;
 import com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindString;
@@ -55,7 +59,7 @@ import retrofit2.Response;
 
 public class DetailsActivity extends AppCompatActivity implements MoviesConstantsUtils {
 
-    private static final String TAG = DetailsActivity.class.getSimpleName();
+    private static final String TAG = DetailsActivity.class.getSimpleName() ;
     @BindView(R.id.details_poster)
     ImageView posterIV;
     @BindView(R.id.details_overview)
@@ -80,16 +84,20 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
     ImageView iconAddToFavouriteList;
     @BindView(R.id.details_icons_play_btn)
     ImageView iconPlayBtn;
+    @BindView(R.id.details_icons_reviews)
+    ImageView iconReviews;
     @BindView(R.id.details_icons_adult)
     ImageView iconIsAdult;
 
     @BindString(R.string.no_trailer_msg)
     String noTrailerMsg;
+    @BindString(R.string.no_reviews_msg)
+    String noReviewsMsg;
     @BindString(R.string.app_name)
     String appName;
 
     private String movieDetails; // to share by intent
-    private Movie movie;
+    private MovieEntry movie;
     private boolean isFavouredStateChanged;
 
     @Override
@@ -98,20 +106,19 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
         setContentView(R.layout.activity_details);
         ButterKnife.bind(this);
 
-        BackgroundColorUtils backgroundColorUtils = new BackgroundColorUtils(this, null);
+        BackgroundColorUtils backgroundColorUtils = new BackgroundColorUtils(this,null);
         backgroundColorUtils.getSharedPreferenceColor(PreferenceManager.getDefaultSharedPreferences(this));
 
         getComingIntentsAndSetViews();
         getMovieDetails();
-
     }
 
     private void getComingIntentsAndSetViews() {
         Intent comingIntent = getIntent();
-        movie = comingIntent.getParcelableExtra(MoviesConstantsUtils.MOVIE_KEY);
+        movie = comingIntent.getParcelableExtra(MOVIE_KEY);
     }
 
-    private void getMovieDetails() {
+    private void getMovieDetails (){
         String title = movie.getTitle();
         String originalTitle = movie.getOriginalTitle();
         String originalLanguage = movie.getOriginalLanguage();
@@ -121,9 +128,9 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
         String releaseDate = movie.getReleaseDate();
         String overView = movie.getOverview();
         String posterPath = movie.getPosterPath();
-        String posterUrl = MoviesConstantsUtils.POSTERS_BESTV_URL + posterPath;
+        String posterUrl = POSTERS_BESTV_URL + posterPath;
         boolean isAdult = movie.isAdult();
-        int isFavoured = movie.isFavoured() ? ONE : ZERO;
+        int isFavoured = movie.getFavoured();
 
         setMovieDetails(title, originalTitle, originalLanguage, String.valueOf(voteAverage),
                 voteCount, releaseDate, popularity, overView);
@@ -146,7 +153,7 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
         if (ZERO == isFavoured) {
             iconAddToFavouriteList.setTag(ZERO);
             iconAddToFavouriteList.setImageResource(R.drawable.ic_heart_empty_24);
-        } else {
+        }else {
             iconAddToFavouriteList.setTag(ONE);
             iconAddToFavouriteList.setImageResource(R.drawable.ic_heart_red_24);
         }
@@ -158,41 +165,70 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
     }
 
     @OnClick(R.id.details_icons_add_to_favourite_list)
-    void onClickIconAddToFavoriteList() {
+    void onClickIconAddToFavoriteList(){
         int isFavoured = (int) iconAddToFavouriteList.getTag();
         changeFavouredState(isFavoured);
     }
 
     @OnClick(R.id.details_icons_play_btn)
-    void onClickIconPlay() {
+    void onClickIconPlay(){
+        final int MOVIE_ID = movie.getMovieId();
+            ApiInterface apiService = ApiClient.getClientForMovie(MOVIE_ID).create(ApiInterface.class);
+            Call<MovieTrailerKeyResponse> call ;
+            call = apiService.getMovieTrailers(API_KEY_VALUE);
+            call.enqueue(new Callback<MovieTrailerKeyResponse>(){
+                @Override
+                public void onResponse(Call<MovieTrailerKeyResponse> call, Response<MovieTrailerKeyResponse> response) {
+                    try{
+                        List<MovieTrailerKey> results = response.body().getResultsContainTrailers();
+                        MovieTrailerKey trailer = results.get(ZERO);
+                        String youtubeId = trailer.getKey();
+                        openVideoTrailer(youtubeId);
+                    }catch (Exception e){
+                        Toast.makeText(getBaseContext(), noTrailerMsg, Toast.LENGTH_LONG).show();
+                        Log.e(TAG, MOVIE_ID + COMMA + e.toString());
+                    }
+                }
+                @Override
+                public void onFailure(Call<MovieTrailerKeyResponse> call, Throwable t) {
+                    Log.e(TAG, MOVIE_ID + COMMA + t.toString());
+                }
+            });
+    }
+
+    @OnClick(R.id.details_icons_reviews)
+    void onClickIconReviews (){
         final int MOVIE_ID = movie.getMovieId();
         ApiInterface apiService = ApiClient.getClientForMovie(MOVIE_ID).create(ApiInterface.class);
-        Call<MovieTrailerKeyResponse> call;
-        call = apiService.getMovieTrailers(API_KEY_VALUE);
-        call.enqueue(new Callback<MovieTrailerKeyResponse>() {
+        Call<MovieReviewsKeyResponse> call ;
+        call = apiService.getMovieReviews(API_KEY_VALUE);
+        call.enqueue(new Callback<MovieReviewsKeyResponse>(){
             @Override
-            public void onResponse(Call<MovieTrailerKeyResponse> call, Response<MovieTrailerKeyResponse> response) {
-                try {
-                    List<MovieTrailerKey> results = response.body().getResultsContainTrailers();
-                    MovieTrailerKey trailer = results.get(ZERO);
-                    String youtubeId = trailer.getKey();
-                    openVideoTrailer(youtubeId);
-                } catch (Exception e) {
-                    Toast.makeText(getBaseContext(), noTrailerMsg, Toast.LENGTH_LONG).show();
+            public void onResponse(Call<MovieReviewsKeyResponse> call, Response<MovieReviewsKeyResponse> response) {
+                try{
+                    List<MovieReviewsKey> results = response.body().getResultsContainReviews();
+                    openReviewsActivity(results);
+                }catch (Exception e){
+                    Toast.makeText(getBaseContext(), noReviewsMsg, Toast.LENGTH_LONG).show();
                     Log.e(TAG, MOVIE_ID + COMMA + e.toString());
                 }
             }
 
             @Override
-            public void onFailure(Call<MovieTrailerKeyResponse> call, Throwable t) {
-                Log.e(TAG, t.toString());
+            public void onFailure(Call<MovieReviewsKeyResponse> call, Throwable t) {
+                Log.e(TAG, MOVIE_ID + COMMA + t.toString());
             }
         });
-
     }
 
-    private void changeFavouredState(int isFavoured) {
-        if (ZERO == isFavoured) {
+    private void openReviewsActivity (List<MovieReviewsKey> results){
+        Intent openReviewsActivity = new Intent(this,ReviewsActivity.class);
+        openReviewsActivity.putParcelableArrayListExtra(REVIEWS , (ArrayList<? extends Parcelable>) results);
+        startActivity(openReviewsActivity);
+    }
+
+    private void changeFavouredState (int isFavoured){
+        if (ZERO == isFavoured){
             iconAddToFavouriteList.setTag(ONE);
             iconAddToFavouriteList.setImageResource(R.drawable.ic_heart_red_24);
         } else {
@@ -203,7 +239,6 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
     }
 
     private Intent shareMovieDetails() {
-
         return ShareCompat.IntentBuilder.from(this).
                 setType(TEXT_TYPE).
                 setText(movieDetails).
@@ -211,7 +246,7 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
                 getIntent();
     }
 
-    private void openVideoTrailer(String youtubeId) {
+    private void openVideoTrailer (String youtubeId){
         Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(YOUTUBE_VND + youtubeId));
         Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(YOUTUBE_URL + youtubeId));
         try {
@@ -224,23 +259,23 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
     public void setMovieDetails(String... movieDetailsValues) {
         StringBuilder stringBuilder = new StringBuilder();
         String[] movieDetailsKeys = getResources().getStringArray(R.array.movie_details);
-        for (int i = MoviesConstantsUtils.ZERO; i < movieDetailsValues.length; i++) {
-            stringBuilder.append(movieDetailsKeys[i]).append(movieDetailsValues[i]).append(MoviesConstantsUtils.NEW_LINE_CHAR);
+        for (int i = ZERO; i < movieDetailsValues.length; i++) {
+            stringBuilder.append(movieDetailsKeys[i]).append(movieDetailsValues[i]).append(NEW_LINE_CHAR);
         }
         this.movieDetails = stringBuilder.toString();
     }
 
     @Override
     public void onBackPressed() {
-        if (isFavouredStateChanged) startIntentServiceForUpdateFavoured();
+        if (isFavouredStateChanged) startIntentServiceForUpdateFavoured ();
         super.onBackPressed();
     }
 
-    private void startIntentServiceForUpdateFavoured() {
+    private void startIntentServiceForUpdateFavoured (){
         Intent startIntentServiceForUpdateFavoured = new Intent(this, MoviesIntentService.class);
         startIntentServiceForUpdateFavoured.setAction(MovieReminderTasks.UPDATE_FAVOURED);
-        startIntentServiceForUpdateFavoured.putExtra(ID_KEYWORD, movie.getRowId());
-        startIntentServiceForUpdateFavoured.putExtra(VALUE, (int) iconAddToFavouriteList.getTag());
+        startIntentServiceForUpdateFavoured.putExtra(ID_KEYWORD , movie.getRowId());
+        startIntentServiceForUpdateFavoured.putExtra(VALUE,(int)iconAddToFavouriteList.getTag());
         startService(startIntentServiceForUpdateFavoured);
     }
 

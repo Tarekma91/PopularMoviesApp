@@ -1,6 +1,4 @@
-<resources>
-    <!--
-
+<!--
 Copyright 2018 tarekmabdallah91@gmail.com
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,17 +12,19 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
- -->
+-->
+<resources>
     <string name="app_name">Movies App</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="action_refresh">Refresh</string>
 
-    <string name="no_data_msg">Loading movies now</string>
-    <string name="no_data_in_db_msg">There is no connection to retrieve data from Internet \n
-        And there is no movies in db with this type</string>
+    <string name="loading_data_msg">Loading movies now</string>
+    <string name="no_data_in_db_msg">Sorry there is no movies in db with this type
+        \nPlease update the movies data
+        \nOr Try again later !</string>
     <string name="no_connection">No internet connection</string>
 
     <string name="favoured_movies">Favoured Movies</string>
@@ -61,6 +61,7 @@ limitations under the License.
     <string name="rating_full_mark">/10</string>
     <string name="details_label">Details</string>
     <string name="settings_label">Settings</string>
+    <string name="reviews_label">Reviews</string>
 
     <string name="error_displaying_data">can not display data @Uri =</string>
     <string name="error_inserting_data">can not insert data @ Uri =</string>
@@ -95,7 +96,7 @@ limitations under the License.
     <string name="value_color_blue_bright" translatable="false">blue_bright</string>
     <string name="value_color_black" translatable="false">black</string>
 
-    <string name="key_color_green_dark">Green Dark</string>
+    <string name="key_color_green_dark" >Green Dark</string>
     <string name="key_color_red_dark">Red Dark</string>
     <string name="key_color_purple">Purple</string>
     <string name="key_color_orange_light">Orange Light</string>
@@ -118,4 +119,14 @@ limitations under the License.
     <string name="ok_msg">OK !</string>
     <string name="start_sync_service_immediately">startSyncMoviesImmediately</string>
     <string name="no_trailer_msg">Sorry can\'t play this trailer right now</string>
+    <string name="no_reviews_msg">Sorry can\'t show this movie reviews right now</string>
+    <string name="deleted_msg">Movies are removed =</string>
+    <string name="creating_new_db_instance_msg">Creating new database instance</string>
+    <string name="getting_db_instance_msg">Getting the database instance</string>
+    <string name="updating_msg">Updating . . .</string>
+    <string name="review_icon_description">review_icon_description</string>
+    <string name="author">Tarek M Abdallah</string>
+    <string name="content_review">this is my review about that movie</string>
+    <string name="open_review_on_web_page_icon_description">open_review_on_web_page_icon_description</string>
+    <string name="no_broswer_found_msg">sorry! there is not any web browser to open this page</string>
 </resources>

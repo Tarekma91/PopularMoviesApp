@@ -17,20 +17,16 @@ limitations under the License.
  */
 package com.example.tarek.popularmoviesapp.sync;
 
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
-
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
-
 import static com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils.ZERO;
 
 public class UpdateMoviesFirebaseJobService extends JobService {
 
     private AsyncTask asyncTask;
-
     @SuppressLint("StaticFieldLeak")
     @Override
     public boolean onStartJob(final JobParameters job) {
@@ -38,7 +34,7 @@ public class UpdateMoviesFirebaseJobService extends JobService {
             @Override
             protected Object doInBackground(Object[] objects) {
                 Context context = UpdateMoviesFirebaseJobService.this;
-                MovieReminderTasks.executeTask(context, MovieReminderTasks.ACTION_SYNC_UPDATING_MOVIES, ZERO, ZERO);
+                MovieReminderTasks.executeTask(context,MovieReminderTasks.ACTION_SYNC_UPDATING_MOVIES, ZERO,ZERO);
                 return null;
             }
 
@@ -46,7 +42,7 @@ public class UpdateMoviesFirebaseJobService extends JobService {
             protected void onPostExecute(Object o) {
                 super.onPostExecute(o);
 
-                jobFinished(job, false);
+                jobFinished(job ,false);
             }
         };
 

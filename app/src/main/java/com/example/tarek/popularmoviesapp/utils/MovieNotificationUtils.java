@@ -28,7 +28,6 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
-
 import com.example.tarek.popularmoviesapp.MainActivity;
 import com.example.tarek.popularmoviesapp.R;
 import com.example.tarek.popularmoviesapp.sync.MovieReminderTasks;
@@ -36,9 +35,10 @@ import com.example.tarek.popularmoviesapp.sync.MoviesIntentService;
 
 public class MovieNotificationUtils {
 
-    private static final int WATER_REMINDER_NOTIFICATION_ID = 1138;
+    private static final int MOVIE_REMINDER_NOTIFICATION_ID = 1138;
     private static final int MOVIE_FAVOURED_PENDING_INTENT_ID = 3417;
     private static final int ACTION_IGNORE_PENDING_INTENT_ID = 555;
+    private static final String MOVIE_REMINDER_NOTIFICATION_CHANNEL_ID = "reminder_notification_channel";
 
     public static void clearAllNotifications(Context context) {
         NotificationManager notificationManager = (NotificationManager)
@@ -48,22 +48,21 @@ public class MovieNotificationUtils {
         }
     }
 
-    public static void setNotification(Context context) {
+    public static void setNotification (Context context){
         NotificationManager notificationManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
-        final String WATER_REMINDER_NOTIFICATION_CHANNEL_ID = "reminder_notification_channel";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel mChannel = new NotificationChannel(
-                    WATER_REMINDER_NOTIFICATION_CHANNEL_ID,
+                    MOVIE_REMINDER_NOTIFICATION_CHANNEL_ID,
                     context.getString(R.string.main_notification_channel_name),
                     NotificationManager.IMPORTANCE_HIGH);
             if (notificationManager != null) {
                 notificationManager.createNotificationChannel(mChannel);
             }
         }
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context, WATER_REMINDER_NOTIFICATION_CHANNEL_ID)
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context, MOVIE_REMINDER_NOTIFICATION_CHANNEL_ID)
                 .setColor(ContextCompat.getColor(context, R.color.colorPrimary))
-                .setSmallIcon(R.drawable.ic_heart_red_24)
+                .setSmallIcon(R.drawable.icon_film_reel)
                 .setLargeIcon(largeIcon(context))
                 .setContentTitle(context.getString(R.string.movies_updated_title_notification))
                 .setContentText(context.getString(R.string.movies_updated_text_notification))
@@ -78,7 +77,7 @@ public class MovieNotificationUtils {
             notificationBuilder.setPriority(NotificationCompat.PRIORITY_HIGH);
         }
         if (notificationManager != null) {
-            notificationManager.notify(WATER_REMINDER_NOTIFICATION_ID, notificationBuilder.build());
+            notificationManager.notify(MOVIE_REMINDER_NOTIFICATION_ID, notificationBuilder.build());
         }
     }
 
@@ -95,15 +94,15 @@ public class MovieNotificationUtils {
                 ignoreReminderPendingIntent);
     }
 
-    private static PendingIntent contentIntent(Context context) {
+    private static PendingIntent contentIntent(Context context){
         Intent openMainActivity = new Intent(context, MainActivity.class);
         return PendingIntent.getActivity(context,
                 MOVIE_FAVOURED_PENDING_INTENT_ID
-                , openMainActivity,
+                ,openMainActivity,
                 PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
-    private static Bitmap largeIcon(Context context) {
-        return BitmapFactory.decodeResource(context.getResources(), R.drawable.icon_app);
+    private static Bitmap largeIcon(Context context){
+        return BitmapFactory.decodeResource(context.getResources() , R.drawable.icon_film_reel);
     }
 }

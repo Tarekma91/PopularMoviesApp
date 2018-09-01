@@ -1,12 +1,20 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp"
-    android:height="24dp"
-    android:viewportHeight="495"
-    android:viewportWidth="495">
-    <path
-        android:fillColor="#C70024"
-        android:pathData="M362.96,14.24c-49.72,0 -92.95,27.53 -115.46,68.13v398.39C284.67,452.84 495,288.55 495,146.28C495,73.36 435.88,14.24 362.96,14.24z" />
-    <path
-        android:fillColor="#FF0C38"
-        android:pathData="M132.04,14.24C59.12,14.24 0,73.36 0,146.28c0,142.26 210.33,306.55 247.5,334.48V82.37C224.99,41.77 181.76,14.24 132.04,14.24z" />
+<!--
+Copyright 2018 tarekmabdallah91@gmail.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<vector android:height="24dp" android:viewportHeight="495"
+    android:viewportWidth="495" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#C70024" android:pathData="M362.96,14.24c-49.72,0 -92.95,27.53 -115.46,68.13v398.39C284.67,452.84 495,288.55 495,146.28C495,73.36 435.88,14.24 362.96,14.24z"/>
+    <path android:fillColor="#FF0C38" android:pathData="M132.04,14.24C59.12,14.24 0,73.36 0,146.28c0,142.26 210.33,306.55 247.5,334.48V82.37C224.99,41.77 181.76,14.24 132.04,14.24z"/>
 </vector>

@@ -30,7 +30,7 @@ public class ApiClient {
 
     private static final String BASE_URL = "http://api.themoviedb.org/3/movie/";
     private static Retrofit retrofitForListMovies = null;
-    private static Retrofit retrofitForMovie = null;
+    private static final String SLASH = "/";
 
     public static Retrofit getClientForListMovies() {
         if (retrofitForListMovies == null) {
@@ -43,11 +43,10 @@ public class ApiClient {
     }
 
     public static Retrofit getClientForMovie(int movieId) {
-        String url = BASE_URL + String.valueOf(movieId) + "/";
-        retrofitForMovie = new Retrofit.Builder().
+        final String url = BASE_URL + String.valueOf(movieId) + SLASH;
+        return new Retrofit.Builder().
                 baseUrl(url).
                 addConverterFactory(GsonConverterFactory.create()).
                 build();
-        return retrofitForMovie;
     }
 }

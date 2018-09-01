@@ -23,7 +23,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 
 public class MovieTrailerKey implements Parcelable {
-    // id	"5794fffbc3a36829ab00056f"
+     // id	"5794fffbc3a36829ab00056f"
     // iso_639_1	"en"
     // iso_3166_1	"US"
     // key	"2LqzF5WauAw"
@@ -31,6 +31,17 @@ public class MovieTrailerKey implements Parcelable {
     // site	"YouTube"
     // size	1080
     // type	"Trailer"
+
+    @SerializedName("id")
+    private String id;
+    @SerializedName("key")
+    private String key;
+
+
+    private MovieTrailerKey(Parcel in) {
+        id = in.readString();
+        key = in.readString();
+    }
 
     public static final Creator<MovieTrailerKey> CREATOR = new Creator<MovieTrailerKey>() {
         @Override
@@ -43,15 +54,7 @@ public class MovieTrailerKey implements Parcelable {
             return new MovieTrailerKey[size];
         }
     };
-    @SerializedName("id")
-    private String id;
-    @SerializedName("key")
-    private String key;
 
-    private MovieTrailerKey(Parcel in) {
-        id = in.readString();
-        key = in.readString();
-    }
 
     public String getKey() {
         return key;

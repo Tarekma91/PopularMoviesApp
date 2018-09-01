@@ -21,9 +21,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
 import com.example.tarek.popularmoviesapp.R;
-
 import static com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils.ID_KEYWORD;
 import static com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils.INVALID;
 import static com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils.VALUE;
@@ -33,7 +31,6 @@ import static com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils.ZERO
 public class MoviesIntentService extends IntentService {
 
     private final static String TAG = MoviesIntentService.class.getSimpleName();
-
     public MoviesIntentService() {
         super(TAG);
     }
@@ -58,8 +55,8 @@ public class MoviesIntentService extends IntentService {
                         break;
                 }
             }
-        } else {
-            Log.d(TAG, getString(R.string.onHandleIntent_intent_is_null));
+        }else {
+            Log.d(TAG , getString(R.string.onHandleIntent_intent_is_null) );
         }
 
     }

@@ -25,7 +25,6 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
-
 import com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils;
 
 
@@ -40,17 +39,17 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Movies
         PreferenceScreen preferenceScreen = getPreferenceScreen();
         int count = preferenceScreen.getPreferenceCount(); // 2 categories
 
-        for (int i = ZERO; i < count; i++) {
+        for (int i = ZERO; i <count; i++){
             Preference category = preferenceScreen.getPreference(i);
-            if (category instanceof PreferenceCategory) {
+            if (category instanceof PreferenceCategory){
                 PreferenceCategory preferenceCategory = (PreferenceCategory) category;
                 int countCategoryList = preferenceCategory.getPreferenceCount();
-                for (int k = ZERO; k < countCategoryList; k++) {
+                for (int k = ZERO ; k < countCategoryList ; k++){
                     Preference preference = ((PreferenceCategory) category).getPreference(k);
-                    if (!(preference instanceof CheckBoxPreference)) {
+                    if (!(preference instanceof CheckBoxPreference)){
                         String key = preference.getKey();
-                        String value = sharedPreferences.getString(key, EMPTY_STRING);
-                        setSummaryPreference(preference, value);
+                        String value  = sharedPreferences.getString(key,EMPTY_STRING);
+                        setSummaryPreference(preference , value);
                     }
                 }
             }
@@ -59,10 +58,10 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Movies
     }
 
     private void setSummaryPreference(Preference preference, String value) {
-        if (preference instanceof ListPreference) {
+        if (preference instanceof ListPreference){
             ListPreference listPreference = (ListPreference) preference;
             int index = listPreference.findIndexOfValue(value);
-            if (index >= ZERO) {
+            if (index >= ZERO){
                 listPreference.setSummary(listPreference.getEntries()[index]);
             }
         }
@@ -77,11 +76,11 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Movies
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Preference preference = findPreference(key);
-        if (preference instanceof ListPreference) {
+        if (preference instanceof ListPreference){
             ListPreference listPreference = (ListPreference) preference;
-            String newValue = sharedPreferences.getString(key, EMPTY_STRING);
+            String newValue = sharedPreferences.getString(key ,EMPTY_STRING);
             int index = listPreference.findIndexOfValue(newValue);
-            if (index >= ZERO) {
+            if (index >= ZERO){
                 listPreference.setSummary(listPreference.getEntries()[index]);
             }
         }

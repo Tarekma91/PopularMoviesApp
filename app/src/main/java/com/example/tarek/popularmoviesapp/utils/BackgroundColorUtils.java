@@ -21,7 +21,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.widget.Toolbar;
-
 import com.example.tarek.popularmoviesapp.R;
 
 public class BackgroundColorUtils {
@@ -30,43 +29,40 @@ public class BackgroundColorUtils {
     private final Toolbar toolbar;
     private final Context context;
 
-    public BackgroundColorUtils(Activity activity, Toolbar toolbar) {
+    public BackgroundColorUtils(Activity activity , Toolbar toolbar){
         this.activity = activity;
         this.toolbar = toolbar;
         this.context = activity.getBaseContext();
     }
-
-    public final void getSharedPreferenceColor(SharedPreferences sharedPreferences) {
+    public final void getSharedPreferenceColor (SharedPreferences sharedPreferences){
         String theme = sharedPreferences.getString(context.getString(R.string.key_background_color_list),
                 context.getString(R.string.value_color_black));
         setTheme(theme);
 
     }
-
-    private void setTheme(String theme) {
-        if (null != theme) {
-            if (context.getResources().getString(R.string.value_color_blue_bright).equals(theme)) {
+    private void setTheme (String theme){
+        if (null != theme){
+            if (context.getResources().getString(R.string.value_color_blue_bright).equals(theme)){
                 changeBackgroundColorTo(R.color.blue_bright);
-            } else if (context.getResources().getString(R.string.value_color_green_dark).equals(theme)) {
+            }else if (context.getResources().getString(R.string.value_color_green_dark).equals(theme)){
                 changeBackgroundColorTo(R.color.green_dark);
-            } else if (context.getResources().getString(R.string.value_color_orange_dark).equals(theme)) {
+            }else if (context.getResources().getString(R.string.value_color_orange_dark).equals(theme)){
                 changeBackgroundColorTo(R.color.orange_dark);
-            } else if (context.getResources().getString(R.string.value_color_orange_light).equals(theme)) {
+            }else if (context.getResources().getString(R.string.value_color_orange_light).equals(theme)){
                 changeBackgroundColorTo(R.color.orange_light);
-            } else if (context.getResources().getString(R.string.value_color_purple).equals(theme)) {
+            }else if (context.getResources().getString(R.string.value_color_purple).equals(theme)){
                 changeBackgroundColorTo(R.color.purple);
-            } else if (context.getResources().getString(R.string.value_color_red_dark).equals(theme)) {
+            }else if (context.getResources().getString(R.string.value_color_red_dark).equals(theme)){
                 changeBackgroundColorTo(R.color.red_dark);
-            } else {
+            }else {
                 changeBackgroundColorTo(R.color.black);
             }
 
         }
     }
-
-    private void changeBackgroundColorTo(int colorId) {
+    private void changeBackgroundColorTo(int colorId){
         activity.getWindow().getDecorView().setBackgroundColor(context.getResources().getColor(colorId));
-        if (null != toolbar) {
+        if (null != toolbar ){
             if (R.color.black == colorId)
                 toolbar.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary2));
             else
