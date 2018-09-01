@@ -17,6 +17,7 @@ limitations under the License.
  */
 package com.example.tarek.popularmoviesapp.sync;
 
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;

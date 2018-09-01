@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PopularMoviesAppS1 no libs.iml" filepath="$PROJECT_DIR$/PopularMoviesAppS1 no libs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PopularMoviesAppS2-retrofit analyzed.iml" filepath="$PROJECT_DIR$/PopularMoviesAppS2-retrofit analyzed.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

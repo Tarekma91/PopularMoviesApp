@@ -14,7 +14,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-*/
+ */
 package com.example.tarek.popularmoviesapp.sync;
 
 
@@ -25,7 +25,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import com.example.tarek.popularmoviesapp.R;
-import com.example.tarek.popularmoviesapp.data.MovieContract;
+import com.example.tarek.popularmoviesapp.data.MovieContract.MovieEntry;
 import com.firebase.jobdispatcher.Constraint;
 import com.firebase.jobdispatcher.Driver;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
@@ -41,9 +41,9 @@ import static com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils.ZERO
 public class ReminderUtilities {
 
     private static final String TAG = ReminderUtilities.class.getSimpleName();
-    private static final int REMINDER_INTERVAL_HOURS = 12;
+    private static final int REMINDER_INTERVAL_HOURS = 6;
     private static final int REMINDER_INTERVAL_SECONDS = (int) TimeUnit.HOURS.toSeconds(REMINDER_INTERVAL_HOURS);
-    private static final int SYNC_FLEX_TIME_SECONDS = REMINDER_INTERVAL_SECONDS; // INTERVAL 12 - 24 hours
+    private static final int SYNC_FLEX_TIME_SECONDS = REMINDER_INTERVAL_SECONDS; // INTERVAL 6 - 12 hours
     private static final String REMINDER_JOB_TAG = "notificationUpdateMovies";
 
     private static boolean isInitialized;
@@ -75,12 +75,14 @@ public class ReminderUtilities {
         Thread checkForEmpty = new Thread(new Runnable() {
             @Override
             public void run() {
-                Uri uri = MovieContract.MovieEntry.CONTENT_URI;
-                String[] projection = new String[]{MovieContract.MovieEntry.COLUMN_DATE};
-                String selectionStatement = MovieContract.MovieEntry.getSqlSelectForTodayOnwards();
+
+                Uri uri = MovieEntry.CONTENT_URI;
+                String[] projection = new String[]{MovieEntry.COLUMN_DATE};
+                String selectionStatement = MovieEntry.getSqlSelectForTodayOnwards();
 
                 Cursor cursor = context.getContentResolver().query(uri, projection, selectionStatement,
                         null, null);
+
                 if (null == cursor || ZERO >= cursor.getCount()) {
                     startSyncMoviesImmediately(context);
                 } else {
@@ -93,7 +95,7 @@ public class ReminderUtilities {
         checkForEmpty.start();
     }
 
-    public static void startSyncMoviesImmediately(Context context) {
+    private static void startSyncMoviesImmediately(Context context) {
         Log.d(TAG, context.getString(R.string.start_sync_service_immediately));
         Intent openMovieIntentService = new Intent(context, MoviesIntentService.class);
         openMovieIntentService.setAction(MovieReminderTasks.START_SYNC_MOVIES_IMMEDIATELY);

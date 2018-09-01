@@ -25,21 +25,32 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tarek.popularmoviesapp.model.Movie;
+import com.example.tarek.popularmoviesapp.model.MovieTrailerKey;
+import com.example.tarek.popularmoviesapp.model.MovieTrailerKeyResponse;
+import com.example.tarek.popularmoviesapp.rest.ApiClient;
+import com.example.tarek.popularmoviesapp.rest.ApiInterface;
 import com.example.tarek.popularmoviesapp.sync.MovieReminderTasks;
 import com.example.tarek.popularmoviesapp.sync.MoviesIntentService;
 import com.example.tarek.popularmoviesapp.utils.BackgroundColorUtils;
 import com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class DetailsActivity extends AppCompatActivity implements MoviesConstantsUtils {
@@ -72,6 +83,8 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
     @BindView(R.id.details_icons_adult)
     ImageView iconIsAdult;
 
+    @BindString(R.string.no_trailer_msg)
+    String noTrailerMsg;
     @BindString(R.string.app_name)
     String appName;
 
@@ -108,7 +121,7 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
         String releaseDate = movie.getReleaseDate();
         String overView = movie.getOverview();
         String posterPath = movie.getPosterPath();
-        String posterUrl = MoviesConstantsUtils.POSTERS_URL + posterPath;
+        String posterUrl = MoviesConstantsUtils.POSTERS_BESTV_URL + posterPath;
         boolean isAdult = movie.isAdult();
         int isFavoured = movie.isFavoured() ? ONE : ZERO;
 
@@ -152,8 +165,30 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
 
     @OnClick(R.id.details_icons_play_btn)
     void onClickIconPlay() {
-        String youtubeId = movie.getVideo();
-        openVideoTrailer(youtubeId);
+        final int MOVIE_ID = movie.getMovieId();
+        ApiInterface apiService = ApiClient.getClientForMovie(MOVIE_ID).create(ApiInterface.class);
+        Call<MovieTrailerKeyResponse> call;
+        call = apiService.getMovieTrailers(API_KEY_VALUE);
+        call.enqueue(new Callback<MovieTrailerKeyResponse>() {
+            @Override
+            public void onResponse(Call<MovieTrailerKeyResponse> call, Response<MovieTrailerKeyResponse> response) {
+                try {
+                    List<MovieTrailerKey> results = response.body().getResultsContainTrailers();
+                    MovieTrailerKey trailer = results.get(ZERO);
+                    String youtubeId = trailer.getKey();
+                    openVideoTrailer(youtubeId);
+                } catch (Exception e) {
+                    Toast.makeText(getBaseContext(), noTrailerMsg, Toast.LENGTH_LONG).show();
+                    Log.e(TAG, MOVIE_ID + COMMA + e.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MovieTrailerKeyResponse> call, Throwable t) {
+                Log.e(TAG, t.toString());
+            }
+        });
+
     }
 
     private void changeFavouredState(int isFavoured) {
@@ -178,8 +213,7 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
 
     private void openVideoTrailer(String youtubeId) {
         Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(YOUTUBE_VND + youtubeId));
-        Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse(YOUTUBE_URL + youtubeId));
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(YOUTUBE_URL + youtubeId));
         try {
             startActivity(appIntent);
         } catch (ActivityNotFoundException ex) {

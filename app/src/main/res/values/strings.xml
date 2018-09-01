@@ -1,4 +1,5 @@
-<!--
+<resources>
+    <!--
 
 Copyright 2018 tarekmabdallah91@gmail.com
 
@@ -14,23 +15,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
--->
-<resources>
+ -->
     <string name="app_name">Movies App</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-
     <string name="no_data_msg">Loading movies now</string>
-    <string name="no_data_in_db_msg">Sorry\n
-        There is no connection to\n
-        retrieve data from Internet\n
-        And there is no movies in db\n
-        with this type</string>
-    <string name="no_connection_msg">No internet connection</string>
-    <string name="updating_msg">Updating . . .</string>
+    <string name="no_data_in_db_msg">There is no connection to retrieve data from Internet \n
+        And there is no movies in db with this type</string>
+    <string name="no_connection">No internet connection</string>
 
     <string name="favoured_movies">Favoured Movies</string>
     <string name="popular_movies"> Popular Movies </string>
@@ -61,7 +56,6 @@ limitations under the License.
     <string name="movie_popularity"> 123548 </string>
     <string name="movie_vote_count"> 125369</string>
     <string name="movie_vote_average"> 8.5 </string>
-
 
     <string name="savedInstanceState_not_null">savedInstanceState != null </string>
     <string name="rating_full_mark">/10</string>
@@ -123,10 +117,5 @@ limitations under the License.
     <string name="movies_updated_text_notification">Db Of Movies App Has Been Updated</string>
     <string name="ok_msg">OK !</string>
     <string name="start_sync_service_immediately">startSyncMoviesImmediately</string>
-    <string name="downloading_url_msg">downloading url &amp;</string>
-    <string name="error_in_movie_id_msg">there is an error in  movie\'s id = </string>
-    <string name="error_no_service_bad_gatway_msg">error : service is not available now , or bad gate way</string>
-    <string name="response_msg">response =</string>
-
-
+    <string name="no_trailer_msg">Sorry can\'t play this trailer right now</string>
 </resources>

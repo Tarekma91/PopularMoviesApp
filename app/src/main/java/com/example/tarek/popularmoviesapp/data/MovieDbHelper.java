@@ -64,12 +64,12 @@ class MovieDbHelper extends SQLiteOpenHelper {
                 MovieEntry.COLUMN_OVERVIEW + TEXT + NOT_NULL + COMA +
                 MovieEntry.COLUMN_POSTER_PATH + TEXT + NOT_NULL + COMA +
                 MovieEntry.COLUMN_BACKDROP_PATH + TEXT + NOT_NULL + COMA +
-                MovieEntry.COLUMN_FAVOURITE + INTEGER + NOT_NULL + DEFAULT + ZERO + COMA +/* boolean */
-                MovieEntry.COLUMN_MOVIES_POPULAR + INTEGER + NOT_NULL + DEFAULT + ZERO + COMA +/* boolean */
-                MovieEntry.COLUMN_MOVIES_UPCOMING + INTEGER + NOT_NULL + DEFAULT + ZERO + COMA +/* boolean */
-                MovieEntry.COLUMN_MOVIES_TOP_RATED + INTEGER + NOT_NULL + DEFAULT + ZERO + COMA +/* boolean */
-                MovieEntry.COLUMN_MOVIES_NOW_PLAYING + INTEGER + NOT_NULL + DEFAULT + ZERO + CLOSE_BRACKET + SEMI_COLUMN;/* boolean */
-
+                MovieEntry.COLUMN_FAVOURITE + INTEGER + NOT_NULL + DEFAULT + ZERO + COMA +
+                MovieEntry.COLUMN_MOVIES_POPULAR + INTEGER + NOT_NULL + DEFAULT + ZERO + COMA +
+                MovieEntry.COLUMN_MOVIES_UPCOMING + INTEGER + NOT_NULL + DEFAULT + ZERO + COMA +
+                MovieEntry.COLUMN_MOVIES_TOP_RATED + INTEGER + NOT_NULL + DEFAULT + ZERO + COMA +
+                MovieEntry.COLUMN_MOVIES_NOW_PLAYING + INTEGER + NOT_NULL + DEFAULT + ZERO + CLOSE_BRACKET + SEMI_COLUMN;
+        /* list types :default:"" , popular , top rated , upcoming , playing now */
         db.execSQL(CREATE_TABLE_QUERY);
     }
 

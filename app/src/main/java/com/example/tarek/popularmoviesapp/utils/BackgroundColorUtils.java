@@ -44,7 +44,6 @@ public class BackgroundColorUtils {
     }
 
     private void setTheme(String theme) {
-        // TODO - to solve this method to change all theme
         if (null != theme) {
             if (context.getResources().getString(R.string.value_color_blue_bright).equals(theme)) {
                 changeBackgroundColorTo(R.color.blue_bright);

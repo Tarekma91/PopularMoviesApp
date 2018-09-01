@@ -65,7 +65,7 @@ public class MovieRecyclerCursorAdapter extends RecyclerView.Adapter<MovieRecycl
             if (cursor.moveToPosition(position)) {
                 holder.itemPosition.setText(String.valueOf(position + ONE));
                 holder.ratingTv.setText(cursor.getString(cursor.getColumnIndex(MovieEntry.COLUMN_VOTE_AVERAGE)));
-                String url = MoviesConstantsUtils.POSTERS_URL +
+                String url = MoviesConstantsUtils.POSTERS_185_URL +
                         cursor.getString(cursor.getColumnIndex(MovieEntry.COLUMN_POSTER_PATH));
                 Picasso.get().load(url).placeholder(R.drawable.progress_animation)
                         .error(R.drawable.icon_app)

@@ -152,7 +152,7 @@ public class MovieContentProvider extends ContentProvider implements MoviesConst
         int deletedRows;
         switch (match) {
             case MOVIE:
-                deletedRows = db.delete(MovieEntry.TABLE_NAME, selection, selectionArgs); // to delete all rows but still increment according to last id
+                deletedRows = db.delete(MovieEntry.TABLE_NAME, null, null); // to delete all rows but still increment according to last id
                 break;
             case MOVIE_ID:
                 deletedRows = db.delete(MovieEntry.TABLE_NAME, selection, selectionArgs);

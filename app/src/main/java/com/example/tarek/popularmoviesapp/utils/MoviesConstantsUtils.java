@@ -19,8 +19,6 @@ package com.example.tarek.popularmoviesapp.utils;
 
 import android.net.Uri;
 
-import com.example.tarek.popularmoviesapp.BuildConfig;
-
 public interface MoviesConstantsUtils {
 
     //   https://api.themoviedb.org/3/movie/popular?api_key=#####
@@ -52,39 +50,18 @@ public interface MoviesConstantsUtils {
     String YOUTUBE_VND = "vnd.youtube:";
 
     String MOVIE_KEY = "MOVIE";
-    String LIST_KEY_FOR_URL = "LIST";
-    String MOVIE_KEY_FOR_URL = "MOVIE";
     String EMPTY_STRING = "";
+    String COMMA = " , ";
 
-    String SIMPLE_DATE_FORMAT_PAtTERN = "EEEE";
+    // --Commented out by Inspection (31/07/2018 01:12 ص):String SIMPLE_DATE_FORMAT_PAtTERN = "EEEE";
     String MORE_THAN = " >= ";
     String EQUALS = " =? ";
     String TEXT_TYPE = "text/plain";
     String NEW_LINE_CHAR = "\n";
-    String SCANNER_REGEX = "\\A";
-    int BAD_GATEWAY = 502;
-    int SERVICE_UNAVAILABLE = 503;
-    int THE_REQUEST_IS_OK = 200;
-    int READ_TIME_OUT = 10000;
-    int CONNECT_TIME_OUT = 15000;
-    int REFRESH_TIME_MS = 1000;
-    String REQUESTED_METHOD = "GET";
 
     String VALUE = "value";
-    String VOTE_COUNT = "vote_count";
     String ID_KEYWORD = "id";
-    String VOTE_AVERAGE = "vote_average";
-    String TITLE = "title";
-    String POPULARITY = "popularity";
-    String POSTER_PATH_KEYWORD = "poster_path";
-    String ORIGINAL_LANGUAGE = "original_language";
-    String ORIGINAL_TITLE = "original_title";
-    String BACKDROP_PATH = "backdrop_path";
-    String ADULT = "adult";
-    String OVERVIEW = "overview";
-    String RELEASE_DATE = "release_date";
-    String RESULTS = "results";
-    String KEY_KEYWORD = "key";
+
 
     String COUNTER_KEYWORD = "counter";
     String IS_CONNECTED = "isConnected ";

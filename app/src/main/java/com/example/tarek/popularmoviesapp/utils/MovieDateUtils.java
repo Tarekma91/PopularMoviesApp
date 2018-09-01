@@ -16,13 +16,6 @@
 
 package com.example.tarek.popularmoviesapp.utils;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.text.format.DateUtils;
-
-import com.example.tarek.popularmoviesapp.R;
-
-import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
@@ -156,23 +149,26 @@ public class MovieDateUtils implements MoviesConstantsUtils {
 //    }
 // --Commented out by Inspection STOP (29/07/2018 10:41 م)
 
-    /**
-     * This method will return the local time midnight for the provided normalized UTC date.
-     *
-     * @param normalizedUtcDate UTC time at midnight for a given date. This number comes from the
-     *                          database
-     * @return The local date corresponding to the given normalized UTC date
-     */
-    private static long getLocalMidnightFromNormalizedUtcDate(long normalizedUtcDate) {
-        /* The timeZone object will provide us the current user's time zone offset */
-        TimeZone timeZone = TimeZone.getDefault();
-        /*
-         * This offset, in milliseconds, when added to a UTC date time, will produce the local
-         * time.
-         */
-        long gmtOffset = timeZone.getOffset(normalizedUtcDate);
-        return normalizedUtcDate - gmtOffset;
-    }
+// --Commented out by Inspection START (31/07/2018 01:08 ص):
+//    /**
+//     * This method will return the local time midnight for the provided normalized UTC date.
+//     *
+//     * @param normalizedUtcDate UTC time at midnight for a given date. This number comes from the
+//     *                          database
+//     *
+//     * @return The local date corresponding to the given normalized UTC date
+//     */
+//    private static long getLocalMidnightFromNormalizedUtcDate(long normalizedUtcDate) {
+//        /* The timeZone object will provide us the current user's time zone offset */
+//        TimeZone timeZone = TimeZone.getDefault();
+//        /*
+//         * This offset, in milliseconds, when added to a UTC date time, will produce the local
+//         * time.
+//         */
+//        long gmtOffset = timeZone.getOffset(normalizedUtcDate);
+//        return normalizedUtcDate - gmtOffset;
+//    }
+// --Commented out by Inspection STOP (31/07/2018 01:08 ص)
 
 // --Commented out by Inspection START (29/07/2018 10:41 م):
 //    /**
@@ -256,52 +252,58 @@ public class MovieDateUtils implements MoviesConstantsUtils {
 //    }
 // --Commented out by Inspection STOP (29/07/2018 10:41 م)
 
-    /**
-     * Returns a date string in the format specified, which shows an abbreviated date without a
-     * year.
-     *
-     * @param context      Used by DateUtils to format the date in the current locale
-     * @param timeInMillis Time in milliseconds since the epoch (local time)
-     * @return The formatted date string
-     */
-    private static String getReadableDateString(Context context, long timeInMillis) {
-        int flags = DateUtils.FORMAT_SHOW_DATE
-                | DateUtils.FORMAT_NO_YEAR
-                | DateUtils.FORMAT_SHOW_WEEKDAY;
+// --Commented out by Inspection START (31/07/2018 01:08 ص):
+//    /**
+//     * Returns a date string in the format specified, which shows an abbreviated date without a
+//     * year.
+//     *
+//     * @param context      Used by DateUtils to format the date in the current locale
+//     * @param timeInMillis Time in milliseconds since the epoch (local time)
+//     *
+//     * @return The formatted date string
+//     */
+//    private static String getReadableDateString(Context context, long timeInMillis) {
+//        int flags = DateUtils.FORMAT_SHOW_DATE
+//                | DateUtils.FORMAT_NO_YEAR
+//                | DateUtils.FORMAT_SHOW_WEEKDAY;
+//
+//        return DateUtils.formatDateTime(context, timeInMillis, flags);
+//    }
+// --Commented out by Inspection STOP (31/07/2018 01:08 ص)
 
-        return DateUtils.formatDateTime(context, timeInMillis, flags);
-    }
-
-    /**
-     * Given a day, returns just the name to use for that day.
-     * E.g "today", "tomorrow", "Wednesday".
-     *
-     * @param context      Context to use for resource localization
-     * @param dateInMillis The date in milliseconds (UTC time)
-     * @return the string day of the week
-     */
-    private static String getDayName(Context context, long dateInMillis) {
-        /*
-         * If the date is today, return the localized version of "Today" instead of the actual
-         * day name.
-         */
-        long daysFromEpochToProvidedDate = elapsedDaysSinceEpoch(dateInMillis);
-        long daysFromEpochToToday = elapsedDaysSinceEpoch(System.currentTimeMillis());
-
-        int daysAfterToday = (int) (daysFromEpochToProvidedDate - daysFromEpochToToday);
-
-        switch (daysAfterToday) {
-            case ZERO:
-                return context.getString(R.string.today);
-            case ONE:
-                return context.getString(R.string.tomorrow);
-
-            default:
-                @SuppressLint("SimpleDateFormat")
-                SimpleDateFormat dayFormat = new SimpleDateFormat(SIMPLE_DATE_FORMAT_PAtTERN);
-                return dayFormat.format(dateInMillis);
-        }
-    }
+// --Commented out by Inspection START (31/07/2018 01:08 ص):
+//    /**
+//     * Given a day, returns just the name to use for that day.
+//     *   E.g "today", "tomorrow", "Wednesday".
+//     *
+//     * @param context      Context to use for resource localization
+//     * @param dateInMillis The date in milliseconds (UTC time)
+//     *
+//     * @return the string day of the week
+//     */
+//    private static String getDayName(Context context, long dateInMillis) {
+//        /*
+//         * If the date is today, return the localized version of "Today" instead of the actual
+//         * day name.
+//         */
+//        long daysFromEpochToProvidedDate = elapsedDaysSinceEpoch(dateInMillis);
+//        long daysFromEpochToToday = elapsedDaysSinceEpoch(System.currentTimeMillis());
+//
+//        int daysAfterToday = (int) (daysFromEpochToProvidedDate - daysFromEpochToToday);
+//
+//        switch (daysAfterToday) {
+//            case ZERO:
+//                return context.getString(R.string.today);
+//            case ONE:
+//                return context.getString(R.string.tomorrow);
+//
+//            default:
+//                @SuppressLint("SimpleDateFormat")
+//                SimpleDateFormat dayFormat = new SimpleDateFormat(SIMPLE_DATE_FORMAT_PAtTERN);
+//                return dayFormat.format(dateInMillis);
+//        }
+//    }
+// --Commented out by Inspection STOP (31/07/2018 01:08 ص)
 }
 
 
