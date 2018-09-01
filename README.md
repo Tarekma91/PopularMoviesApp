@@ -7,8 +7,9 @@ Android app that communicates with the internet and provides a responsive user e
 * Allow users to view and play trailers (either in the YouTube app or a web browser).
 * Allow users to read overview of a selected movie.
 * Allow users to mark a movie as a favorite.
-* Room Db.
+
 * Using :
+- Room Db.
 - Retrofit & Gsno
 - Firebase Job Dispatcher
 - Intent Services
