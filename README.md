@@ -15,5 +15,5 @@ Android app that communicates with the internet and provides a responsive user e
 - Notifications
 - Picasso
 
-#Youtube:
+# Youtube:
 https://www.youtube.com/watch?v=x1AuQFrO2RA
