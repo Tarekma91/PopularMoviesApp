@@ -19,12 +19,12 @@ package com.example.tarek.popularmoviesapp;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
+
 import com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils;
 
 
@@ -45,12 +45,14 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Movies
                 PreferenceCategory preferenceCategory = (PreferenceCategory) category;
                 int countCategoryList = preferenceCategory.getPreferenceCount();
                 for (int k = ZERO ; k < countCategoryList ; k++){
-                    Preference preference = ((PreferenceCategory) category).getPreference(k);
-                    if (!(preference instanceof CheckBoxPreference)){
-                        String key = preference.getKey();
+                    Preference preference = preferenceCategory.getPreference(k);
+                    if (preference instanceof ListPreference) {
+                        ListPreference listPreference = (ListPreference) preference;
+                        String key = listPreference.getKey();
                         String value  = sharedPreferences.getString(key,EMPTY_STRING);
-                        setSummaryPreference(preference , value);
+                        setSummaryPreference(listPreference, value);
                     }
+
                 }
             }
         }

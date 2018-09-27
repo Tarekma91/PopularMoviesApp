@@ -19,7 +19,6 @@ package com.example.tarek.popularmoviesapp.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,17 +62,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.MovieViewHolde
         String url = MoviesConstantsUtils.POSTERS_185_URL + movieEntry.getPosterPath();
         Picasso.get().load(url).placeholder(R.drawable.progress_animation)
                 .error(R.drawable.icon_app)
-                .into(holder.moviePosterIV, new com.squareup.picasso.Callback() {
-                    @Override
-                    public void onSuccess() {
-
-                    }
-
-                    @Override
-                    public void onError(Exception e) {
-                        Log.d(TAG, e.getMessage());
-                    }
-                });
+                .into(holder.moviePosterIV);
         int adult = movieEntry.isAdult() ? ONE : ZERO ;
         if (ZERO == adult) {
             holder.adultIcon.setVisibility(View.GONE);

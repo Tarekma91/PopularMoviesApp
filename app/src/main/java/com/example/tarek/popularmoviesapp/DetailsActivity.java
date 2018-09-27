@@ -136,7 +136,7 @@ public class DetailsActivity extends AppCompatActivity implements MoviesConstant
                 voteCount, releaseDate, popularity, overView);
 
         Picasso.get().load(posterUrl).placeholder(R.drawable.progress_animation)
-                .error(android.R.drawable.stat_notify_error)
+                .error(R.drawable.icon_app)
                 .into(posterIV);
 
         titleTV.setText(title);
