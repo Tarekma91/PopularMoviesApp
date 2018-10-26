@@ -19,12 +19,12 @@ limitations under the License.
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/space10">
+    android:layout_margin="@dimen/space1"
+    app:cardCornerRadius="@dimen/space1">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/item_height"
-        android:padding="@dimen/space4">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/iv_item_movie_poster"
@@ -38,9 +38,10 @@ limitations under the License.
             app:layout_constraintTop_toTopOf="parent" />
 
         <include
+            android:id="@+id/include"
             layout="@layout/rating_icon_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginBottom="@dimen/space4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/iv_item_movie_poster"
@@ -50,28 +51,26 @@ limitations under the License.
         <TextView
             android:id="@+id/tv_items_position_in_adapter"
             style="@style/text_views_style"
-            android:layout_marginBottom="@dimen/space4"
-            android:layout_marginLeft="@dimen/space4"
             android:layout_marginStart="@dimen/space4"
-            android:layout_marginTop="@dimen/space4"
+            android:layout_marginLeft="@dimen/space4"
             android:textColor="@color/text_color_main_activity"
             android:textSize="@dimen/rating_full_mark_text_size"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_item_movie_poster"
+            app:layout_constraintBottom_toBottomOf="@id/include"
+            app:layout_constraintStart_toStartOf="@id/include"
+            app:layout_constraintTop_toTopOf="@id/include"
             tools:text="@string/rating_full_mark" />
 
         <ImageView
             android:id="@+id/iv_adult_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="@dimen/space8"
-            android:layout_marginEnd="@dimen/space8"
-            android:layout_marginRight="@dimen/space8"
             android:contentDescription="@string/adult_icon_description"
             android:src="@drawable/plus_18_movie_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@id/include"
+            app:layout_constraintEnd_toEndOf="@id/include"
+            app:layout_constraintTop_toTopOf="@+id/include" />
 
 
 

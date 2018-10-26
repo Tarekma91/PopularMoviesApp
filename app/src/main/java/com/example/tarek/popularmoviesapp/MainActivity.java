@@ -95,14 +95,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //  moved this block of code here to apply changes in SettingsActivity and click back button
         setViewsAndInitiateVariables();
-
         if (isConnected()) {
             ReminderUtilities.initialize(this);
             setupViewModel();
@@ -176,6 +169,7 @@ public class MainActivity extends AppCompatActivity
         switch (id){
             case R.id.action_settings:
                 openSettingsActivity();
+                finish();
                 break;
             case R.id.action_refresh:
                 reloadData();

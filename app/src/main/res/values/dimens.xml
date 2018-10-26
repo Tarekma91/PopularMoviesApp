@@ -21,10 +21,10 @@ limitations under the License.
     <dimen name="nav_header_height">176dp</dimen>
 
     <dimen name="item_height">250dp</dimen>
-    <dimen name="poster_item_height">200dp</dimen>
+    <dimen name="poster_item_height">220dp</dimen>
     <dimen name="space4">4dp</dimen>
     <dimen name="space8">8dp</dimen>
-    <dimen name="space10">10dp</dimen>
+    <dimen name="space1">1dp</dimen>
 
     <dimen name="normal_text_size">18sp</dimen>
     <dimen name="label_text_size">22sp</dimen>

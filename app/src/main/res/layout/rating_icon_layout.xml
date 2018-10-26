@@ -20,21 +20,11 @@ limitations under the License.
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/iv_item_vote_rating"
-        style="@style/icons_styles"
-        android:layout_marginBottom="@dimen/space8"
-        android:layout_marginTop="@dimen/space8"
-        android:contentDescription="@string/movie_vote_average"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_favorite_star"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_item_rating_value"
-        app:layout_constraintEnd_toStartOf="@+id/tv_item_rating_value"
-        app:layout_constraintTop_toTopOf="@+id/tv_item_rating_value" />
-
     <TextView
         android:id="@+id/tv_item_rating_value"
         style="@style/rating_text_views_style"
+        android:drawableStart="@drawable/ic_favorite_star"
+        android:drawableLeft="@drawable/ic_favorite_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,8 +33,9 @@ limitations under the License.
 
     <TextView
         style="@style/rating_full_mark_text_views_style"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_item_rating_value"
         app:layout_constraintStart_toEndOf="@+id/tv_item_rating_value"
-        app:layout_constraintTop_toTopOf="@+id/iv_item_vote_rating" />
+        app:layout_constraintTop_toTopOf="@+id/tv_item_rating_value"
+        app:layout_constraintVertical_bias="0.8" />
 
 </android.support.constraint.ConstraintLayout>

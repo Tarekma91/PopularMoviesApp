@@ -17,6 +17,7 @@ limitations under the License.
  */
 package com.example.tarek.popularmoviesapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -27,5 +28,16 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        openMainActivity();
+    }
+
+    private void openMainActivity() {
+        Intent openMainActivity = new Intent(this, MainActivity.class);
+        startActivity(openMainActivity);
     }
 }

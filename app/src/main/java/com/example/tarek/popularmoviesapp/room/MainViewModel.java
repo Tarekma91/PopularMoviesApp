@@ -22,19 +22,20 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
 import android.content.SharedPreferences;
+
 import com.example.tarek.popularmoviesapp.R;
 import com.example.tarek.popularmoviesapp.room.database.AppDatabase;
 import com.example.tarek.popularmoviesapp.room.database.MovieEntry;
+
 import java.util.List;
+
 import static com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils.FAVOURITE;
 import static com.example.tarek.popularmoviesapp.utils.MoviesConstantsUtils._PREFERENCES;
 
 
 public class MainViewModel extends AndroidViewModel {
 
-
     private static final String TAG = MainViewModel.class.getSimpleName();
-
     private LiveData<List<MovieEntry>> data;
 
     public MainViewModel(Application application) {

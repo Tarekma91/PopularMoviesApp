@@ -61,13 +61,11 @@ limitations under the License.
 
     <style name="rating_text_views_style">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:textSize">@dimen/rating_text_size</item>
-        <item name="android:gravity">end</item>
-        <item name="android:layout_gravity">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
         <item name="android:textColor">@color/text_color_main_activity</item>
-        <item name="android:layout_margin">@dimen/space4</item>
-        <item name="android:padding">@dimen/space4</item>
     </style>
 
     <style name="rating_full_mark_text_views_style">
@@ -75,11 +73,7 @@ limitations under the License.
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">@string/rating_full_mark</item>
         <item name="android:textSize">@dimen/rating_full_mark_text_size</item>
-        <item name="android:gravity">end</item>
-        <item name="android:layout_gravity">end</item>
         <item name="android:textColor">@color/text_color_main_activity</item>
-        <item name="android:layout_margin">@dimen/space4</item>
-        <item name="android:padding">@dimen/space4</item>
     </style>
 
 
